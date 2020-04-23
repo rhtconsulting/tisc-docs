@@ -1,4 +1,4 @@
-[id="tssc-terms-definitions-{context}"]
+[id="tisc-terms-definitions-{context}"]
 = {ProjectName} Terms and Definitions
 
 {ProjectShortName}:: {ProjectName}

@@ -26,12 +26,6 @@ image::multi-dev-workflow-simple.png[overview of multiple devs simple workflow]
 
 image::multi-dev-workflow-detail.png[overview of multiple devs details workflow]
 
-////
-==== Detailed Workflow
-
-image::detailed-workflow.png[detailed workflow]
-////
-
 === Java (Backend)
 
 image::tssc-java-tools.png[link="https://www.lucidchart.com/documents/view/686183c6-821a-42a8-a71a-44dbc594de91/aG9PKqQUuCDz"]
@@ -46,7 +40,7 @@ https://www.lucidchart.com/documents/view/c9bb007f-3d24-4800-ab52-ad6c972752eb[L
 
 == Tooling
 
-The following table lists chosen tooling for the TSSC MVP implementation.  A separate document will be used to list all implementations as the progress moves forward.  See diagram for system architecture.
+The following table lists chosen tooling for the TSIC MVP implementation.  A separate document will be used to list all implementations as the progress moves forward.  See diagram for system architecture.
 
 .Tooling by Workflow Implementation
 [cols="a,a,a",options="header"]
