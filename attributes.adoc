@@ -1,0 +1,11 @@
+:imagesdir: images
+:toc: left
+:toclevels: 3
+:numbered:
+:sectanchors:
+:sectlinks:
+
+:ProjectName: Trusted{nbsp}Infrastructure{nbsp}Supply{nbsp}Chain
+:ProjectShortName: TISC
+:ProjectNameID: tisc
+:ProjectVersion: 1.0
