@@ -6,5 +6,5 @@
 
 Documenation source for the Trusted Infrastructure Supply Chain (TISC) project.
 
-* Published Documentation: [https://rhtconsulting.github.io/tssc-docs/](https://rhtconsulting.github.io/tisc-docs/)
+* Published Documentation: [https://rhtconsulting.github.io/tisc-docs/](https://rhtconsulting.github.io/tisc-docs/)
 * Raw Documenation: [master.adoc](master.adoc)
