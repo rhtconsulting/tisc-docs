@@ -26,17 +26,17 @@ image::multi-dev-workflow-simple.png[overview of multiple devs simple workflow]
 
 image::multi-dev-workflow-detail.png[overview of multiple devs details workflow]
 
-=== Java (Backend)
+=== Role/Module Development (Subcomponents)
 
-image::tssc-java-tools.png[link="https://www.lucidchart.com/documents/view/686183c6-821a-42a8-a71a-44dbc594de91/aG9PKqQUuCDz"]
+image::tisc-rolemodule-dev.png[link="https://www.lucidchart.com/invitations/accept/4ccf1aec-8854-4505-a4a7-a43a6a99b294"]
 
-https://www.lucidchart.com/documents/view/686183c6-821a-42a8-a71a-44dbc594de91/aG9PKqQUuCDz[LucidChart Java (Backend) TSSC]
+https://www.lucidchart.com/invitations/accept/4ccf1aec-8854-4505-a4a7-a43a6a99b294[LucidChart Role/Module TISC]
 
-=== JavaScript (Frontend)
+=== Infra Stack Development (Composite)
 
-image::tssc-javascript-tools.png[link="https://www.lucidchart.com/documents/view/c9bb007f-3d24-4800-ab52-ad6c972752eb"]
+image::tisc-stack-dev.png[link="https://www.lucidchart.com/invitations/accept/4ccf1aec-8854-4505-a4a7-a43a6a99b294"]
 
-https://www.lucidchart.com/documents/view/c9bb007f-3d24-4800-ab52-ad6c972752eb[LucidChart Javascript (Frontend) TSSC]
+https://www.lucidchart.com/invitations/accept/4ccf1aec-8854-4505-a4a7-a43a6a99b294[LucidChart Stack TISC]
 
 == Tooling
 
@@ -49,8 +49,8 @@ The following table lists chosen tooling for the TSIC MVP implementation.  A sep
 2+| Tools by Workflow Type
 
 |
-h| *Java (Backend)*
-h| *JavaScript (Frontend)*
+h| *Role/Module*
+h| *Stack*
 
 | Source Control 
 2+| https://github.com/go-gitea/gitea[Gitea]
@@ -64,40 +64,28 @@ h| *JavaScript (Frontend)*
 | Artifact Repository
 2+| https://jfrog.com/open-source/[JFrog Artifactory]
 
-| Image Registry
-2+| Red Hat Quay (+ Clair)
-
 | Continuous Integration
 2+|
 * Jenkins
 * Tekton
 
 | Continuous Deployment
-2+| https://argoproj.github.io/argo-cd/[ArgoCD]
+2+|
+* Jenkins
+* DroneCI
+* GitlabCI
 
 | Security Static Code Analysis
-| SonarQube
-| SonarQube
+| Molecule
+| Molecule
 
 | Linting Satic Code Analysis
-| SonarQube
-| SonarQube
+| Ansible-Lint
+| Ansible-Lint
 
 | Unit Testing
-| Junit
-|
-* TBD
-** Mocha?
-** Jest?
-** ?
-
-| Build
-| Maven
-| N/A
-
-| Static Compliance Container Image Scanning
-| OpenSCAP
-| OpenSCAP
+| Molecule
+| Molecule
 
 | Static Vulnerability Container Image Scanning
 | OpenSCAP
@@ -150,22 +138,6 @@ a| TBD
 | 2
 | WAG since https://www.jfrog.com/confluence/display/JFROG/System+Requirements#SystemRequirements-RecommendedHardware[JFrog Artifactory Docs - Recommended Hardware] provides no recommendation
 
-| Red Hat Quay - Operator Based
-| 2
-| 4
-| https://access.redhat.com/documentation/en-us/red_hat_quay/3.2/html/deploy_red_hat_quay_-_basic/preparing_for_red_hat_quay_basic#prerequisites[Quay Docs - Preparing for Red Hat Quay Basic - Prerequisites],
-https://access.redhat.com/documentation/en-us/red_hat_quay/3/html/deploy_red_hat_quay_on_openshift_with_quay_setup_operator/architecture[Operator and Quay Architecture]
-
-| Red Hat Quay - Operator Based - DB (Cruncy Data PostgrSQL)
-| 2 / Operator Governed
-| 8 / Operator Governed
-| 
-
-| Red Hat Clair
-| 2
-| 4
-|
-
 | Tekton
 | Operator Governed
 | Operator Governed
@@ -181,76 +153,8 @@ https://access.redhat.com/documentation/en-us/red_hat_quay/3/html/deploy_red_hat
 | Variable
 | 
 
-| ArgoCD
-| 1
-| 4
-| Worker images are 50Mb in size, API server is extremely small.
-
-| SonarQube
-| 2
-| 2
-| WAG sicne https://docs.sonarqube.org/latest/requirements/hardware-recommendations/[SonarQube official docs] offers no suggestion
-
-| SonarQube DB (PostgreSQL)
-| 2
-| 2
-| WAG sicne https://docs.sonarqube.org/latest/requirements/hardware-recommendations/[SonarQube official docs] offers no suggestion
-
 | Cucumber
 | N/A (embeded in CI container)
 | N/A (embeded in CI container)
 |
-|===
-
-.Red Hat OpenShift Sizing
-[cols="a,a,a,a,a,a",options="header"]
-|===
-| Node
-| CPUs
-| Memmory (GB)
-| Disk (GB)
-| AWS EC2 Instance Type
-| Sizing Source
-
-| Master 0
-| 8
-| 32
-| 120
-| m4.2xlarge
-| https://docs.openshift.com/container-platform/4.3/scalability_and_performance/recommended-host-practices.html#master-node-sizing_[OCP 4 Docs - Master Node Sizing]
-
-| Master 1
-| 8
-| 32
-| 120
-| m4.2xlarge
-| https://docs.openshift.com/container-platform/4.3/scalability_and_performance/recommended-host-practices.html#master-node-sizing_[OCP 4 Docs - Master Node Sizing]
-
-| Master 2
-| 8
-| 32
-| 120
-| m4.2xlarge
-| https://docs.openshift.com/container-platform/4.3/scalability_and_performance/recommended-host-practices.html#master-node-sizing_[OCP 4 Docs - Master Node Sizing]
-
-| Compute 0
-| 8
-| 32
-| 120
-| m4.2xlarge
-| Based on Containerized Tool Sizing needs
-
-| Compute 1
-| 8
-| 32
-| 120
-| m4.2xlarge
-| Based on Containerized Tool Sizing needs
-
-| Compute 2
-| 8
-| 32
-| 120
-| m4.2xlarge
-| Based on Containerized Tool Sizing needs
 |===
